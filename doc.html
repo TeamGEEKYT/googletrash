@@ -1,0 +1,52 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOOGLE TRASH DOCUMENTATION</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <h1>GOOGLE TRASH'S DOCUMENTATION</h1>
+    <p>You do not understand what a certain setting does?</p>
+    <p>Me neither.</p>
+    <br>
+    <h1>INPUTS</h1><br>
+
+    <div class="container" id="texttotranslate">
+        <h1>TEXT TO TRANSLATE</h1>
+        <p>"Text to translate" is the input, the text that is going to get translated multiple times.</p>
+    </div>
+    <br>
+
+    <div class="container" id="iterations">
+        <h1>ITERATIONS</h1>
+        <p>"Iterations" is a value between 2 and 500. It represents the amount of time to translate. The last iteration will always be in the Last Language selecteded by you.</p>
+    </div>
+    <br>
+
+    <div class="container" id="outputlanguage">
+        <h1>OUTPUT LANGUAGE</h1>
+        <p>"Output Language" is the language Google Trash will use as the Last Iteration.</p>
+    </div>
+    <br>
+
+    <h1>ADVANCED INPUTS</h1>
+    <p>Advanced Inputs should ONLY be used by Advanced Users that knows what everything below does.</p>
+
+    <div class="container" id="allowaccuracy">
+        <h1>ALLOW ACCURACY</h1>
+        <p>"Allow Accuracy" allows users to add an "Accuracy System" on the translations. Check below for more details.</p>
+    </div>
+    <br>
+
+    <div class="container" id="minaccuracy">
+        <h1>MIN. ACCURACY</h1>
+        <p>"Min. Accuracy", or Minimum Accuracy can only be shown if <a href="#allowaccuracy">"Allow Accuracy"</a> is enabled. The value has to be between 0 and 100, which represents the "accuracy" of the translation based on the last one.</p>
+        <p>Calculations: TRANSLATED TEXT divided by BEFORE TRANSLATION TEXT</p>
+        <p>If the accuracy is below the Minimum Accuracy, the translation is cancelled and the text is translated into another language.</p>
+    </div>
+    <br>
+
+    <footer></footer>
+    <script src="assets/footer.js"></script>
+</body>

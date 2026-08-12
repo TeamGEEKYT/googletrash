@@ -1,0 +1,80 @@
+body {
+    color: #ffffff;
+    background: linear-gradient(to right, #341a71, #452b82);
+    text-align: center;
+    align-items: center;
+}
+h1 {
+    font-size: 35px;
+}
+p {
+    font-size: 25px;
+    text-align: center;
+}
+a {
+    font-size: 25px;
+    text-align: center;
+}
+button {
+    background: #120850;
+    font-size: 25px;
+    color: #ffffff
+}
+button:hover {
+    background: #342a72;
+    font-size: 26px;
+    color: #ffffff;
+    cursor:pointer;
+}
+button:disabled {
+    background: #010740;
+    font-size: 25px;
+    color: #bbb;
+    cursor: wait;
+}
+input {
+    font-size: 25px;
+    width: 90%;
+    height: 10%;
+    text-align: center;
+}
+input:disabled {
+    cursor: not-allowed
+}
+textarea {
+    height: 35%; width: 90%; font-size: 25px;
+}
+textarea:disabled {
+    cursor: not-allowed
+}
+select {
+    height: 5%; width: 90%; font-size: 25px;
+}
+select:disabled {
+    cursor: not-allowed
+}
+footer {
+    color: #ffffff;
+    background: linear-gradient(to top, #000, #111);
+    padding: 10px, 0, 10px, 0
+}
+.hid {color: #0000; font-size: 3px;}
+.container {
+    background: linear-gradient(to right, #896fc6, #785eb5);
+}
+.popup {
+    position: fixed;
+    background-color: #0005;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+}
+.popupContainer {
+    position: fixed;
+    background: linear-gradient(to right, #896fc6, #785eb5);
+    padding: 14px 5px 14px 5px;
+    height: 90%;
+    width: 75%;
+    text-align: center;
+    border-radius: 14px;
+}

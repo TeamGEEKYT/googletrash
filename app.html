@@ -1,0 +1,54 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOOGLE TRASH BETA</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <h1>GOOGLE TRASH - BETA</h1>
+    <h2>INPUT</h2>
+
+    <p>Text to translate <a href="doc.html#texttotranslate">?</a></p>
+    <textarea placeholder="Text to translate" type="text" multiple="true" id="inputbar" onchange="updateSettings()"></textarea>
+
+    <p>Iterations <a href="doc.html#iterations">?</a></p>
+    <input placeholder="Iterations" type="number" id="iterations" onchange="updateSettings()">
+
+    <p class="hid">i</p>
+
+    <p>Output Language <a href="doc.html#outputlanguage">?</a></p>
+    <select id="outputLanguage" onchange="updateSettings()">
+        <option value="en" selected>English</option>
+        <option value="fr-FR">French (France)</option>
+    </select>
+
+    <h2>ADVANCED SETTINGS</h2>
+    <div id="showadvanced">
+        <p>This should only be used by users that knows what those does!</p>
+        <button onclick="document.getElementById('showadvanced').style.display = 'none'; document.getElementById('advancedsettings').style.display = null">Show me!</button>
+        <p class="hid">i</p>
+    </div>
+
+    <div id="advancedsettings" style="display: none">
+        <p>Allow Accuracy <a href="doc.html#allowaccuracy">?</a></p>
+        <input style="width: 4%; height: 4%;" onchange="updateSettings()" id="allowaccuracy" placeholder="Allow Accuracy" type="checkbox" value="false">
+
+        <p id="minaccuracy_TXT" style="display: none">(loading)</p>
+        <input onchange="updateSettings()" id="minaccuracy" style="display: none; height: 2%;" placeholder="Min Accuracy" type="range" min="0" max="100" value="50">
+    </div>
+    <p class="hid">i</p>
+
+    <button id="googletrashit">GOOGLE TRASH IT!</button>
+    
+    <h2>OUTPUT</h2>
+    <p id="status">STATUS: I was not even started :/</p>
+    <textarea placeholder="Output" type="text" id="output" disabled="true">[NO TRANSLATION YET]</textarea>
+    <p class="hid">i</p>
+    <button id="importoutputasinput" disabled>Insert Output as Input</button>
+    <button id="copy" disabled>Copy Output</button>
+
+    <footer></footer>
+    <script src="assets/footer.js"></script>
+    <script src="assets/translationLogic.js"></script>
+</body>
