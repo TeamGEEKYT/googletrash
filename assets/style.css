@@ -4,6 +4,9 @@ body {
     text-align: center;
     align-items: center;
 }
+header {
+    background: linear-gradient(to right, #120850, #230a60);
+}
 h1 {
     font-size: 35px;
 }
