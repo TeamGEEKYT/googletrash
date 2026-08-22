@@ -8,6 +8,7 @@
 <body>
     <header><img src="favicon_beta.png"></header>
     <h1>TERMS OF SERVICE</h1>
+    <p>Last Update: 22th August</p>
     <p>By using Google Trash, you accept in any way the following Terms of Service, and <a href="https://policies.google.com/terms">Google's Terms of Service</a>, and <a href="https://policies.google.com/privacy">their privacy stuff</a></p>
     <h1>1 - USAGE</h1>
     <p>Google Trash allows you to translate as many times as possible, using Google Translate's API. But avoid exceeding their limits. This includes:</p>
@@ -31,7 +32,9 @@
     <p>» Google is not affiliated with Team Geek in any way.</p>
     <p>» Leaving the page will not save the output. Leaving the page during translation will not save the current progress.</p>
     <p>» Incase of errors, such as Errors 400 or 500, the text will be resetted to the original text. Errors can occur more often if you translate long texts, and happens on Google's End, or locally under specific conditions.</p>
-    <button onclick="window.location.href='app.html'">Start using Google Trash</button><br>
+    <p>» Upon Terms of Service update, you will be taken back to the Home page if you directly go to the Application page.</p>
+    <button onclick="localStorage.setItem('googletrash.tosaccepted', Date.now()); window.location.href='app.html'">Start using Google Trash</button><br>
     <footer></footer>
     <script src="assets/footer.js"></script>
+    <script src="assets/localization.js"></script>
 </body>

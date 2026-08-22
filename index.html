@@ -8,21 +8,28 @@
 <body>
     <p style="color: #0000; font-size: 5px">-</p>
     <header><img src="favicon_beta.png"></header>
-    <p>What if Google Translate gives you back text into your language... But accurately false?</p><br>
-    <button onclick="window.location.href='app.html'">Try it out!</button><br>
-    <a href="tos.html">You accept Terms of Service as soon as you use Google Trash</a>
+    <p style="background-color: #f005; display: none" data-frloc="Conditions Générales d'Utilisations mis à jour. Merci d'aller y jeter un coup d'oeil." id="updatedtos">Terms of Service Updated. Please take a look at it.</p>
+    <p data-frloc="Et si Google Traduction rendait votre texte dans votre langue... Mais précisément faux?">What if Google Translate gives you back text into your language... But accurately false?</p><br>
+    <button onclick="localStorage.setItem('googletrash.tosaccepted', Date.now()); window.location.href='app.html'" data-frloc="Essayer!">Try it out!</button><br>
+    <a href="tos.html" data-frloc="Vous acceptez les Conditions Générales d'Utilisations aussitôt que vous utilisez Google Trash">You accept Terms of Service as soon as you use Google Trash</a>
     <br>
     <div class="container">
-        <h2>Translate Too Many Times Automatically</h2>
-        <p>Translate from 2 times to... A lot!</p>
+        <h2 data-frloc="Traduisez Beaucoup De Fois Automatiquement">Translate Too Many Times Automatically</h2>
+        <p data-frloc="Traduisez de 2 fois à... Beaucoup!">Translate from 2 times to... A lot!</p>
         <br>
-        <h2>Do whanever you want in the meantime</h2>
-        <p>While it is translating for you... Do whatever you want.</p>
+        <h2 data-frloc="Faites ce que vous voulez en attendant">Do whanever you want in the meantime</h2>
+        <p data-frloc="Pendant que celui-ci traduit pour vous... Faites ce que vous voulez.">While it is translating for you... Do whatever you want.</p>
         <br>
         <h2>100% Local</h2>
-        <p>&copy; Google Trash works 100% locally* and does not send data to any other servers!</p>
-        <p style="font-size: 20px">* The website uses Google Translate's API, and only sends, and receive datas from there.</p>
+        <p data-frloc="Google Trash fonctionne complètement localement* et n'envoit pas de données à d'autres serveurs!">&copy; Google Trash works 100% locally* and does not send data to any other servers!</p>
+        <p style="font-size: 20px" data-frloc="* Le site utilise l'API de Google Traduction, et n'envoit et ne reçoit que des données de là-bas.">* The website uses Google Translate's API, and only sends, and receive datas from there.</p>
     </div>
     <footer></footer>
+    <script src="assets/localization.js"></script>
     <script src="assets/footer.js"></script>
+    <script>
+        if (new URLSearchParams(window.location.search).get("tos")) {
+            document.getElementById("updatedtos").style.display = null
+        }
+    </script>
 </body>

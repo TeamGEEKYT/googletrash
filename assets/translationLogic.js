@@ -1,12 +1,22 @@
+let online = true
+
+if (localStorage.getItem("googletrash.tosaccepted")<1787404727572) {
+    window.location.href = "index.html?tos=1"
+}
+
 // TRANSLATE FUNCTION
 async function translateText(text, targetLang) {
+    if (!navigator.onLine) {
+        online = false;
+    }
+
     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
     
     try {
         const response = await fetch(url);
+        console.log(targetLang)
         
         if (!response.ok) {
-            console.log(targetLang)
             throw new Error(`HTTP error! status: ${response.status}`);
         }
                 
@@ -35,7 +45,7 @@ async function translateText(text, targetLang) {
                 success: true,
                 text: text,
                 didnotchanged: true,
-                reason: "Translation too long!"
+                reason: "Translation too long"
             };
         }
 
@@ -109,6 +119,22 @@ const languageNames = {
     'xh': 'Xhosa', 'yi': 'Yiddish', 'yo': 'Yoruba', 'zu': 'Zoulou'
 };
 
+const thanksToUser = localStorage.getItem("googletrash.lang")
+
+function statusUpdate(en, fr) {
+    if (thanksToUser==="fr") {
+        document.getElementById("status").innerText = "Statut: "+fr
+        if (translationsLeft != 0) {
+            document.getElementById("status").innerText += " ("+translationsLeft+" traductions restantes / ~"+translationsLeft*7.5+" secondes restantes)"
+        }
+    } else {
+        document.getElementById("status").innerText = "Status: "+en
+        if (translationsLeft != 0) {
+            document.getElementById("status").innerText += " ("+translationsLeft+" translations left / ~"+translationsLeft*7.5+" seconds left)"
+        }
+    }
+}
+
 // Get a Random Language
 function getRandomLanguage(exclude = []) {
     const availableLanguages = languages.filter(lang => !exclude.includes(lang));
@@ -166,7 +192,17 @@ function disableValuesInput(enable) {
 
 // Translation Iterations
 async function translationIteration() {
-    if (translationsLeft == 0) {return}
+    if (!online) {
+        translationsLeft = 0
+        statusUpdate(
+            "You do not have an Internet Connection. Please refresh the page to continue using Google Trash. This has been made to prevent accidental DDOS attacks.",
+            "Vous n'avez pas de Connexion à Internet. Merci de rafraîchir la page pour continuer à utiliser Google Trash. Ceci a été réalisé pour éviter une attaque DDOS accidentelle."
+        )
+        return
+    }
+    if (translationsLeft <= 0) {
+        return
+    }
 
     if (translationsLeft!=1) {
         currentText = await (translateText(currentText, getRandomLanguage()))
@@ -175,15 +211,16 @@ async function translationIteration() {
     }
 
     if (!currentText.success) {
-        document.getElementById("status").innerText = "Status: ERROR! ("+translationsLeft+" translations left / "+translationsLeft*7.5+" seconds left)"
+        statusUpdate("ERROR!", "ERREUR!")
         currentText = transSettings.text
         translationsLeft += 1
         return false
     }
 
     translationsLeft -= 1
+    document.querySelector("progress").value = transSettings.amount-translationsLeft
     
-    document.getElementById("status").innerText = "Status: Google Trashing... ("+translationsLeft+" translations left / "+translationsLeft*7.5+" seconds left)"
+    statusUpdate("Google Trashing...", "En train de Google Trasher...")
 
     if (currentText.didnotchanged) {
         document.getElementById("status").innerText = document.getElementById("status").innerText+" - "+currentText.reason+". Retranslating to another language..."
@@ -192,7 +229,8 @@ async function translationIteration() {
     currentText = currentText.text
 
     if (translationsLeft == 0) {
-        document.getElementById("status").innerText = "Status: Success!"
+        document.querySelector("progress").style.display = "none"
+        statusUpdate("Success!", "Succès!")
         document.getElementById("output").value = currentText
         disableValuesInput(false)
     }
@@ -207,18 +245,22 @@ document.getElementById("googletrashit").addEventListener("click", function() {
     if (transSettings.text.length==0) {document.getElementById("status").innerText = "Status: Cannot Google Trash Nothing!"; return}
 
     if (transSettings.text.length > 5000) {
-        document.getElementById("status").innerText = "Status: Cannot Google Trash +5000 characters! ("+transSettings.text.length+")"
+        statusUpdate("Cannot Google Trash +5000 characters! ("+transSettings.text.length+")", "Ne peut pas Google Trasher plus de 5000 caractères!Cannot Google Trash +5000 characters! ("+transSettings.text.length+")")
         return
     }
 
     if (transSettings.amount<=1||transSettings.amount>500) {
-        document.getElementById("status").innerText = "Status: Too much/Not Enough iterations (has to be between 2 and 500 included)!"
+        statusUpdate("Too much/Not Enough iterations (has to be between 2 and 500 included)!", "Trop/Pas assez d'itérations (doit être entre 2 et 500 inclus)!")
         return
     }
 
-    document.getElementById("status").innerText = "Status: Google Trashing..."
-    document.getElementById("output").value = "[GOOGLE TRASHING]"
+    document.querySelector("progress").value = 0
+    document.querySelector("progress").max = transSettings.amount
+    document.querySelector("progress").style.display = null;
+
     translationsLeft = Math.pow(transSettings.amount, 1)
+    statusUpdate("Google Trashing...", "En train de Google Trasher...")
+    document.getElementById("output").value = "[GOOGLE TRASHING]"
     currentText = transSettings.text.replaceAll("\n", " ").replaceAll("/", "[SLASH]")
 
     disableValuesInput(true)

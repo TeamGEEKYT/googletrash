@@ -7,7 +7,7 @@
 </head>
 <body>
     <header><img src="favicon_beta.png"></header>
-    <h2>INPUT</h2>
+    <h2 data-frloc="ENTRÉE">INPUT</h2>
 
     <p>Text to translate <a href="doc.html#texttotranslate">?</a></p>
     <textarea placeholder="Text to translate" type="text" multiple="true" id="inputbar" onchange="updateSettings()"></textarea>
@@ -19,29 +19,29 @@
 
     <p>Output Language <a href="doc.html#outputlanguage">?</a></p>
     <select id="outputLanguage" onchange="updateSettings()">
-        <option value="ar">Arabic</option>
-        <option value="zh">Chinese</option>
-        <option value="en" selected>English</option>
-        <option value="fr">French</option>
-        <option value="de">German</option>
-        <option value="hi">Hindi</option>
-        <option value="id">Indonesian</option>
-        <option value="it">Italian</option>
-        <option value="ja">Japanese</option>
-        <option value="ko">Korean</option>
-        <option value="pl">Polish</option>
-        <option value="pt">Portuguese</option>
-        <option value="ru">Russian</option>
-        <option value="es">Spanish</option>
-        <option value="tr">Turkish</option>
-        <option value="uk">Ukrainian</option>
-        <option value="vi">Vietnamese</option>
+        <option data-frloc="Arabe" value="ar">Arabic</option>
+        <option data-frloc="Chinois" value="zh">Chinese</option>
+        <option data-frloc="Anglais" value="en" selected>English</option>
+        <option data-frloc="Français" value="fr">French</option>
+        <option data-frloc="Allemand" value="de">German</option>
+        <option data-frloc="Hindi" value="hi">Hindi</option>
+        <option data-frloc="Indonésien" value="id">Indonesian</option>
+        <option data-frloc="Italien" value="it">Italian</option>
+        <option data-frloc="Japonais" value="ja">Japanese</option>
+        <option data-frloc="Coréen" value="ko">Korean</option>
+        <option data-frloc="Polonais" value="pl">Polish</option>
+        <option data-frloc="Portuguais" value="pt">Portuguese</option>
+        <option data-frloc="Russe" value="ru">Russian</option>
+        <option data-frloc="Espagnol" value="es">Spanish</option>
+        <option data-frloc="Turc" value="tr">Turkish</option>
+        <option data-frloc="Ukrainien" value="uk">Ukrainian</option>
+        <option data-frloc="Vietnamien" value="vi">Vietnamese</option>
     </select>
 
-    <h2>ADVANCED SETTINGS</h2>
+    <h2 data-frloc="PARAMÈTRES AVANCÉS">ADVANCED SETTINGS</h2>
     <div id="showadvanced">
-        <p>This should only be used by users that knows what those does!</p>
-        <button onclick="document.getElementById('showadvanced').style.display = 'none'; document.getElementById('advancedsettings').style.display = null">Show me!</button>
+        <p data-frloc="Ceci ne devrait être utilisé que par les utilisateurs qui savent ce que ceci fait!">This should only be used by users that knows what those does!</p>
+        <button data-frloc="Montrez-moi!" onclick="document.getElementById('showadvanced').style.display = 'none'; document.getElementById('advancedsettings').style.display = null">Show me!</button>
         <p class="hid">i</p>
     </div>
 
@@ -54,16 +54,19 @@
     </div>
     <p class="hid">i</p>
 
-    <button id="googletrashit">GOOGLE TRASH IT!</button>
+    <button data-frloc="GOOGLE TRASHEZ-LE!" id="googletrashit">GOOGLE TRASH IT!</button>
     
-    <h2>OUTPUT</h2>
-    <p id="status">STATUS: I was not even started :/</p>
-    <textarea placeholder="Output" type="text" id="output" disabled="true">[NO TRANSLATION YET]</textarea>
+    <h2 data-frloc="SORTIE">OUTPUT</h2>
+    <p data-frloc="STATUS: Je n'ai même pas débuté :/" id="status">STATUS: I was not even started :/</p>
+    <progress style="display: none" value="0" max="1"></progress>
+    <p class="hid">a</p>
+    <textarea data-frloc="[AUCUNE TRADUCTION]" placeholder="Output" type="text" id="output" disabled="true">[NO TRANSLATION YET]</textarea>
     <p class="hid">i</p>
-    <button id="importoutputasinput" disabled>Insert Output as Input</button>
-    <button id="copy" disabled>Copy Output</button>
+    <button id="importoutputasinput" disabled data-frloc="Insérer la Sortie en Entrée">Insert Output as Input</button>
+    <button id="copy" disabled data-frloc="Copier la Sortie">Copy Output</button>
 
     <footer></footer>
     <script src="assets/footer.js"></script>
     <script src="assets/translationLogic.js"></script>
+    <script src="assets/localization.js"></script>
 </body>

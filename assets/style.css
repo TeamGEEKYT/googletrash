@@ -44,6 +44,10 @@ input {
 input:disabled {
     cursor: not-allowed
 }
+progress {
+    height: 5%;
+    width: 90%;
+}
 textarea {
     height: 35%; width: 90%; font-size: 25px;
 }
