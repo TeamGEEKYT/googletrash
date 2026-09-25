@@ -1,21 +1,25 @@
 let online = true
+let isTranslating = false
 
 if (localStorage.getItem("googletrash.tosaccepted")<1787404727572) {
     window.location.href = "index.html?tos=1"
 }
 
 // TRANSLATE FUNCTION
-async function translateText(text, targetLang) {
+async function translateText(text, targetLang, forceTranslation=false) {
     if (!navigator.onLine) {
         online = false;
     }
-
+    console.log(targetLang)
+    if (isTranslating) {return {didnotchanged: true, reason: "A translation is already going!"}}
+    isTranslating = true
     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
     
     try {
         const response = await fetch(url);
-        console.log(targetLang)
         
+        isTranslating = false
+
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -28,8 +32,10 @@ async function translateText(text, targetLang) {
         
         const translated = data[0][0][0]
 
+        if (failCombo!=5) {
         if (transSettings.allowaccuracy) { if (translationsLeft!=1) {
-        if (translated.length/text.length<=transSettings.minaccuracy/100) {
+        if (transSettings.text.length/text.length<=transSettings.minaccuracy/100) {
+            
             translationsLeft += 1
             return {
                 success: true,
@@ -48,6 +54,7 @@ async function translateText(text, targetLang) {
                 reason: "Translation too long"
             };
         }
+    }
 
         return {
             success: true,
@@ -55,6 +62,7 @@ async function translateText(text, targetLang) {
             didnotchanged: false
         };
     } catch (error) {
+        isTranslating = false
         return {
             success: false,
             text: text,
@@ -77,6 +85,7 @@ let transSettings = {
 // Some mid-translation variables
 let translationsLeft = 0
 let currentText = ""
+let failCombo = 0
 
 // All available languages
 const languages = [
@@ -125,12 +134,22 @@ function statusUpdate(en, fr) {
     if (thanksToUser==="fr") {
         document.getElementById("status").innerText = "Statut: "+fr
         if (translationsLeft != 0) {
-            document.getElementById("status").innerText += " ("+translationsLeft+" traductions restantes / ~"+translationsLeft*7.5+" secondes restantes)"
+            document.getElementById("status").innerText += " ("+translationsLeft+" traduction(s) restante(s) / "
+            if (translationsLeft>=8) {
+                document.getElementById("status").innerText += "~"+Math.round(translationsLeft/8)+" minute(s) restantes)"
+            } else {
+                document.getElementById("status").innerText += "~"+translationsLeft*7.5+" secondes restantes)"
+            }
         }
     } else {
         document.getElementById("status").innerText = "Status: "+en
         if (translationsLeft != 0) {
-            document.getElementById("status").innerText += " ("+translationsLeft+" translations left / ~"+translationsLeft*7.5+" seconds left)"
+            document.getElementById("status").innerText += " ("+translationsLeft+" translation(s) left / "
+            if (translationsLeft>=8) {
+                document.getElementById("status").innerText += "~"+Math.round(translationsLeft/8)+" minute(s) left)"
+            } else {
+                document.getElementById("status").innerText += "~"+translationsLeft*7.5+" seconds left)"
+            }
         }
     }
 }
@@ -192,6 +211,7 @@ function disableValuesInput(enable) {
 
 // Translation Iterations
 async function translationIteration() {
+    if (isTranslating) {return}
     if (!online) {
         translationsLeft = 0
         statusUpdate(
@@ -204,6 +224,9 @@ async function translationIteration() {
         return
     }
 
+    let forceTrans = false
+    if (failCombo==5) {forceTrans = true}
+
     if (translationsLeft!=1) {
         currentText = await (translateText(currentText, getRandomLanguage()))
     } else {
@@ -212,8 +235,7 @@ async function translationIteration() {
 
     if (!currentText.success) {
         statusUpdate("ERROR!", "ERREUR!")
-        currentText = transSettings.text
-        translationsLeft += 1
+        translationsLeft = 0
         return false
     }
 
@@ -224,13 +246,17 @@ async function translationIteration() {
 
     if (currentText.didnotchanged) {
         document.getElementById("status").innerText = document.getElementById("status").innerText+" - "+currentText.reason+". Retranslating to another language..."
+        failCombo += 1
+    } else {
+        failCombo = 0
     }
 
+    const transSuccess = currentText.success
     currentText = currentText.text
 
     if (translationsLeft == 0) {
         document.querySelector("progress").style.display = "none"
-        statusUpdate("Success!", "Succès!")
+        if (transSuccess) {statusUpdate("Success!", "Succès!")}
         document.getElementById("output").value = currentText
         disableValuesInput(false)
     }

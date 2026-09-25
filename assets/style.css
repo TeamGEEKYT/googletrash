@@ -33,7 +33,7 @@ button:disabled {
     background: #010740;
     font-size: 25px;
     color: #bbb;
-    cursor: wait;
+    cursor: not-allowed;
 }
 input {
     font-size: 25px;
