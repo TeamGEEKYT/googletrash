@@ -8,4 +8,4 @@ Google Trash is still in beta, so please don't except much for now...
 # [WEBSITE](https://teamgeekyt.github.io/googletrash)
 The website on itself is **fine**, but will likely get more updates.
 
-# LATEST UPDATE: v26.9.25_BETA1
+# LATEST UPDATE: v26.9.26_BETA1
