@@ -1,7 +1,7 @@
 let online = true
 let isTranslating = false
 
-if (localStorage.getItem("googletrash.tosaccepted")<1787404727572) {
+if (localStorage.getItem("googletrash.tosaccepted")<1790400628256) {
     window.location.href = "index.html?tos=1"
 }
 
@@ -11,7 +11,7 @@ async function translateText(text, targetLang, forceTranslation=false) {
         online = false;
     }
     console.log(targetLang)
-    if (isTranslating) {return {didnotchanged: true, reason: "A translation is already going!"}}
+    if (isTranslating) {return {success: true, text: text, didnotchanged: true, reason: "A translation is already going!"}}
     isTranslating = true
     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
     
