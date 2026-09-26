@@ -1,5 +1,11 @@
+if (localStorage.getItem("googletrash.tosaccepted")<1790400628256) {
+    if (window.location.href !== window.location.origin+"/googletrash/index.html?tos=1" && window.location.href !== window.location.origin+"/googletrash/tos.html" && !window.location.href.includes(window.location.origin+"/googletrash/lang.html")) {
+        window.location.href = "index.html?tos=1"
+    }
+}
+
 const copyright = `<br>
-&copy; Google Trash v26.9.26_BETA1<br>
+&copy; Google Trash v26.9.26_BETA2<br>
 Team Geek 2026 - Google 2026<br>`
 
 const FOOTERHTML = copyright+`

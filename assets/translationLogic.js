@@ -1,10 +1,6 @@
 let online = true
 let isTranslating = false
 
-if (localStorage.getItem("googletrash.tosaccepted")<1790400628256) {
-    window.location.href = "index.html?tos=1"
-}
-
 // TRANSLATE FUNCTION
 async function translateText(text, targetLang, forceTranslation=false) {
     if (!navigator.onLine) {
