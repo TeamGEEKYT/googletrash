@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: You should report any bugs you find on Google Trash.
+about: You want to report a bug you find on Google Trash.
 title: ''
 labels: bug
 assignees: TeamGEEKYT
