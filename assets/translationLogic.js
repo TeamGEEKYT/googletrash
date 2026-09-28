@@ -1,6 +1,17 @@
 let online = true
 let isTranslating = false
 
+if (localStorage.getItem("googletrash.userform")!=1) {
+    // document.getElementById("user_form").style.display = null
+    document.getElementById("googleformsbtn").addEventListener("click", function() {
+        window.open("https://forms.gle/AqYdPySJtC993qdW7")
+        document.getElementById("user_form").style.display = "none"
+        localStorage.setItem("googletrash.userform", 1)
+    })
+} else {
+    document.getElementById("user_form").remove()
+}
+
 // TRANSLATE FUNCTION
 async function translateText(text, targetLang, forceTranslation=false) {
     if (!navigator.onLine) {
@@ -231,8 +242,8 @@ async function translationIteration() {
 
     if (!currentText.success) {
         statusUpdate("ERROR!", "ERREUR!")
-        translationsLeft = 0
-        return false
+        translationsLeft = 1
+        //return false
     }
 
     translationsLeft -= 1
