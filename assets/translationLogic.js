@@ -109,6 +109,11 @@ const languages = [
     'ur', 'ug', 'uz', 'vi', 'cy', 'xh', 'yi', 'yo', 'zu'
 ];
 
+// All "Dangerous" Languages (high chance of Error 400 if long text)
+const dangerousLanguages = [
+    "hy", "ml", "ky", "si", "yi", "gu", "kn", "mr", "ur", "tg"
+]
+
 // All language names
 const languageNames = {
     'af': 'Afrikaans', 'sq': 'Albanais', 'am': 'Amharique', 'ar': 'Arabe', 'hy': 'Arménien',
@@ -235,7 +240,7 @@ async function translationIteration() {
     if (failCombo==5) {forceTrans = true}
 
     if (translationsLeft!=1) {
-        currentText = await (translateText(currentText, getRandomLanguage()))
+        currentText = await (translateText(currentText, getRandomLanguage(dangerousLanguages)))
     } else {
         currentText = await (translateText(currentText, transSettings.finalLang))
     }
