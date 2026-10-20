@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOOGLE TRASH BETA - DEMO</title>
+    <link id="stylesheet" rel="stylesheet">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <p style="color: #0000; font-size: 5px">-</p>
+    <header><img src="favicon_beta.png"></header>
+    <p data-frloc="Démo">Demo</p><br>
+    <br>
+    <div class="container">
+        <h1 data-frloc="1. PHRASE:">1. SENTENCE:</h1>
+        <p data-frloc="Écrivons une phrase ou un mot. Par exemple:">Let's write down a sentence or a word. For instance:</p>
+        <p id="sentence_totranslate">-</p>
+        <br>
+        <h1>2. SETUP</h1>
+        <p data-frloc="Changez la quantité d'itérations, la langue de sortie, etc. Par exemple, on va mettre 10 itérations et le Français en tant que langue de sortie.">Change the amount of iterations, the output language etc. For instance, we'll set 10 iterations with as output language English.</p>
+        <p data-frloc="On va laisser le reste par défaut.">We'll leave the rest as default.</p>
+        <br>
+        <h1 data-frloc="3. GOOGLE TRASHEZ-LE!">3. GOOGLE TRASH IT!</h1>
+        <p data-frloc="Quand tout est prêt, appuyez sur Google Trashez-le!">When everything's ready, press on Google Trash It!</p>
+        <button disabled id="googletrashit" data-frloc="GOOGLE TRASHEZ-LE!">GOOGLE TRASH IT!</button>
+        <p id="sentence_received"></p>
+
+        <div id="sentence_received_ready" style="display: none;">
+            <h1 data-frloc="4. VOYEZ LE RÉSULTAT">4. SEE THE RESULTS</h1>
+            <p data-frloc="Après un certain temps, vous devriez voir une sortie différente.">After a certain amount of time, you should see something different at the output.</p>
+            <p data-frloc="Il est possible que la sortie soit proche, ou la même que l'entrée, mais plus le nombre d'itérations est grand, ou plus l'entrée est long, plus vous aurez de chance de croiser des différences.">It is possible that the output is close, or the same as the input, but the higher the amount of iterations is, or the longer the input is, the more chance you will encounter differences.</p>
+            <button id="retry" data-frloc="Réessayer">Try Again</button>
+        </div>
+    </div>
+
+    <p data-frloc="Notez: La Démo ne traduit pas ces phrases/mots en temps réel. Il s'agit juste de résultats de tests de Google Trash par Team Geek, son créateur.">Please note: The Demo does not translate those sentences/words in real-time. They are just results from Google Trash's tests from Team Geek, its creator.</p>
+    <p data-frloc="Pour simplifier, Google Trash ne travaille pas aussi vite: Il s'agit de véritables traductions de Google Trash pré-écrites.">To simplify, Google Trash does not work that fast: It is Google Trash's actual translations pre-written.</p>
+
+    <br>
+    <footer></footer>
+    <script src="assets/localization.js"></script>
+    <script src="assets/footer.js"></script>
+    <script src="assets/demo.js"></script>
+    <script src="assets/scripts/style.js"></script>
+</body>
+</html>

@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOOGLE TRASH BETA (Home)</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <link id="stylesheet" rel="stylesheet">
     <link rel="icon" href="favicon.ico">
 </head>
 <body>
@@ -23,10 +23,18 @@
         <h2>100% Local</h2>
         <p data-frloc="Google Trash fonctionne complètement localement* et n'envoit pas de données à d'autres serveurs!">&copy; Google Trash works 100% locally* and does not send data to any other servers!</p>
         <p style="font-size: 20px" data-frloc="* Le site utilise l'API de Google Traduction, et n'envoit et ne reçoit que des données de là-bas.">* The website uses Google Translate's API, and only sends, and receive datas from there.</p>
+        <br>
+        <h2 data-frloc="Fonctionne sur des mots et des phrases!">Works on both words and sentences!</h2>
+        <p data-frloc="Tant que vous n'allez pas au-dessus des 5000 caractères, vous pouvez traduire n'importe quel mot et phrase!">As long as you don't go over 5000 characters, you can translate any word and sentence!</p>
     </div>
+
+    <!--<button onclick="window.location.href='demo.html'" data-frloc="Démo">Demo</button>
+    -->
+
     <footer></footer>
     <script src="assets/localization.js"></script>
     <script src="assets/footer.js"></script>
+    <script src="assets/scripts/style.js"></script>
     <script>
         if (new URLSearchParams(window.location.search).get("tos")) {
             document.getElementById("updatedtos").style.display = null

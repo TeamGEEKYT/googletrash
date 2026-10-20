@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOOGLE TRASH BETA</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <link id="stylesheet" rel="stylesheet">
     <link rel="icon" href="favicon.ico">
 </head>
 <body>
@@ -18,16 +18,17 @@
 
     <h2 data-frloc="ENTRÉE">INPUT</h2>
 
-    <p>Text to translate <a href="doc.html#texttotranslate">?</a></p>
-    <textarea placeholder="Text to translate" type="text" multiple="true" id="inputbar" onchange="updateSettings()"></textarea>
+    <p><span data-frloc="Texte à traduire">Text to translate</span> <a href="doc.html#texttotranslate">?</a></p>
+    <h4 data-frloc="0/5000 caractères" id="inputbar_counter">0/5000 characters</h4>
+    <textarea placeholder="A cat is eating my homeworks" type="text" multiple="true" id="inputbar"></textarea>
 
-    <p>Iterations <a href="doc.html#iterations">?</a></p>
-    <input placeholder="Iterations" type="number" id="iterations" onchange="updateSettings()">
+    <p><span data-frloc="Itérations">Iterations</span> <a href="doc.html#iterations">?</a></p>
+    <input value="5" placeholder="5" type="number" id="iterations">
 
     <p class="hid">i</p>
 
-    <p>Output Language <a href="doc.html#outputlanguage">?</a></p>
-    <select id="outputLanguage" onchange="updateSettings()">
+    <p><span data-frloc="Langue de sortie">Output Language</span> <a href="doc.html#outputlanguage">?</a></p>
+    <select id="outputLanguage">
         <option data-frloc="Arabe" value="ar">Arabic</option>
         <option data-frloc="Chinois" value="zh">Chinese</option>
         <option data-frloc="Anglais" value="en" selected>English</option>
@@ -55,14 +56,18 @@
     </div>
 
     <div id="advancedsettings" style="display: none">
-        <p>Allow Accuracy <a href="doc.html#allowaccuracy">?</a></p>
-        <input style="width: 4%; height: 4%;" onchange="updateSettings()" id="allowaccuracy" placeholder="Allow Accuracy" type="checkbox" value="false">
+        <p><span data-frloc="Pas de Langues Dangereuses">No Dangerous Languages</span> <a href="doc.html#nodangerouslanguages">?</a></p>
+        <input style="width: 4%; height: 4%;" id="nodangerouslanguages" type="checkbox" value="false">
+
+        <p><span data-frloc="Autoriser la précision">Allow Accuracy</span> <a href="doc.html#allowaccuracy">?</a></p>
+        <input style="width: 4%; height: 4%;" id="allowaccuracy" placeholder="Allow Accuracy" type="checkbox" value="false">
 
         <p id="minaccuracy_TXT" style="display: none">(loading)</p>
-        <input onchange="updateSettings()" id="minaccuracy" style="display: none; height: 2%;" placeholder="Min Accuracy" type="range" min="0" max="100" value="50">
+        <input id="minaccuracy" style="display: none; height: 2%;" placeholder="Min Accuracy" type="range" min="0" max="100" value="50">
     </div>
     <p class="hid">i</p>
 
+    <p data-frloc="Durée: Environ 15 secondes" id="duration_iterations">Duration: Around 15 seconds</p>
     <button data-frloc="GOOGLE TRASHEZ-LE!" id="googletrashit">GOOGLE TRASH IT!</button>
     
     <h2 data-frloc="SORTIE">OUTPUT</h2>
@@ -78,4 +83,6 @@
     <script src="assets/footer.js"></script>
     <script src="assets/translationLogic.js"></script>
     <script src="assets/localization.js"></script>
+    <script src="assets/scripts/style.js"></script>
+    <script src="assets/scripts/anti-multisession.js"></script>
 </body>

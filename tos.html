@@ -1,8 +1,10 @@
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOOGLE TRASH BETA - Terms Of Service</title>
-    <link rel="stylesheet" href="assets/style.css">
+    <link id="stylesheet" rel="stylesheet">
     <link rel="icon" href="favicon.ico">
 </head>
 <body>
@@ -34,7 +36,11 @@
     <p>» Incase of errors, such as Errors 400 or 500, the translation will stop immediatly. You can resume after an error occurs. Errors can occur more often if you translate long texts, and happens on Google's End, or locally under specific conditions.</p>
     <p>» Upon Terms of Service update, you will be taken back to the Home page if you directly go to the Application page.</p>
     <button onclick="localStorage.setItem('googletrash.tosaccepted', Date.now()); window.location.href='app.html'">Start using Google Trash</button><br>
+    <br>
+    <p>Google Trash is available under <a href="https://raw.githubusercontent.com/TeamGEEKYT/googletrash/refs/heads/main/LICENSE">MIT Licence</a></p>
     <footer></footer>
     <script src="assets/footer.js"></script>
     <script src="assets/localization.js"></script>
+    <script src="assets/scripts/style.js"></script>
 </body>
+</html>
