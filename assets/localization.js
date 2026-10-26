@@ -1,6 +1,6 @@
 (function() {
 
-const userLang = localStorage.getItem("googletrash.lang")
+let userLang = localStorage.getItem("googletrash.lang")
 
 if (!userLang && !window.location.href.includes("/lang.html") && !window.location.href.includes("/demo.html")) {
     localStorage.setItem("googletrash.lang", "en")

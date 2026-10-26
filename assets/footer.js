@@ -9,7 +9,7 @@ if (!localStorage.getItem("teamgeek.googletrash.firstusage")) {
 }
 
 const copyright = `<br>
-&copy; Google Trash v26.10.20_BETA1<br>
+&copy; Google Trash v26.10.26_BETA1<br>
 Team Geek 2026 - Google 2026<br>`
 
 const FOOTERHTML = copyright+`

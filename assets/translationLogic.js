@@ -147,7 +147,7 @@ const dangerousLanguages = [
     "hy", "ml", "ky", "si", "yi", "gu", "kn", "mr", "ur", "tg", "am",
     "te", "sd", "ne", "tt", "ka", "uk", "bg", "ps", "fa", "lo", "pa",
     "bn", "ru", "ja", "ta", "km", "be", "ug", "or", "ko", "my", "ar",
-    "kk", "mk", "hi", "mn"
+    "kk", "mk", "hi", "mn", "sr", "th", "he"
 ]
 
 function statusUpdate(en, fr) {
