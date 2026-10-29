@@ -1,4 +1,4 @@
-if (localStorage.getItem("googletrash.tosaccepted")<1790400628256) {
+if (localStorage.getItem("googletrash.tosaccepted")<1790400628256 && !navigator.webdriver) {
     if (window.location.href !== window.location.origin+"/googletrash/index.html?tos=1" && window.location.href !== window.location.origin+"/googletrash/tos.html" && !window.location.href.includes(window.location.origin+"/googletrash/lang.html")) {
         window.location.href = "index.html?tos=1"
     }

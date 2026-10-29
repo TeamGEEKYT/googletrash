@@ -2,7 +2,7 @@
 
 let userLang = localStorage.getItem("googletrash.lang")
 
-if (!userLang && !window.location.href.includes("/lang.html") && !window.location.href.includes("/demo.html")) {
+if (!userLang && !window.location.href.includes("/lang.html") && !window.location.href.includes("/demo.html") && !navigator.webdriver) {
     localStorage.setItem("googletrash.lang", "en")
     window.location.href = "/googletrash/lang.html?red="+encodeURIComponent(window.location.href)
 }
